@@ -650,9 +650,9 @@ struct GltfTextures
         allocImages.resize( RTGL1::TEXTURES_PER_MATERIAL_COUNT * sceneMaterials.size() );
         allocTextures.resize( RTGL1::TEXTURES_PER_MATERIAL_COUNT * sceneMaterials.size() );
 
-        strings  = rgl::span_counted( std::span( allocStrings ) );
-        images   = rgl::span_counted( std::span( allocImages ) );
-        textures = rgl::span_counted( std::span( allocTextures ) );
+        strings  = rgl::span_counted<std::string>( std::span<std::string>( allocStrings ) );
+        images   = rgl::span_counted<cgltf_image>( std::span<cgltf_image>( allocImages ) );
+        textures = rgl::span_counted<cgltf_texture>( std::span<cgltf_texture>( allocTextures ) );
 
         constexpr auto makeSampler = []( RgSamplerAddressMode addrU, RgSamplerAddressMode addrV ) {
             // https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html#_sampler_wraps
