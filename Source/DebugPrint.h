@@ -63,7 +63,7 @@ namespace debug
             }
 
             auto str =
-                std::vformat( msg, std::make_format_args( std::forward< Args >( args )... ) );
+                std::vformat( msg, std::make_format_args( std::forward< Args& >( args )... ) );
 
             Print( severity, std::string_view( str ) );
         }
@@ -92,25 +92,25 @@ namespace debug
     template< typename... Args >
     void Verbose( std::string_view fmt, Args&&... args )
     {
-        detail::Print( RG_MESSAGE_SEVERITY_VERBOSE, fmt, std::forward< Args >( args )... );
+        detail::Print( RG_MESSAGE_SEVERITY_VERBOSE, fmt, std::forward< Args& >( args )... );
     }
 
     template< typename... Args >
     void Info( std::string_view fmt, Args&&... args )
     {
-        detail::Print( RG_MESSAGE_SEVERITY_INFO, fmt, std::forward< Args >( args )... );
+        detail::Print( RG_MESSAGE_SEVERITY_INFO, fmt, std::forward< Args& >( args )... );
     }
 
     template< typename... Args >
     void Warning( std::string_view fmt, Args&&... args )
     {
-        detail::Print( RG_MESSAGE_SEVERITY_WARNING, fmt, std::forward< Args >( args )... );
+        detail::Print( RG_MESSAGE_SEVERITY_WARNING, fmt, std::forward< Args& >( args )... );
     }
 
     template< typename... Args >
     void Error( std::string_view fmt, Args&&... args )
     {
-        detail::Print( RG_MESSAGE_SEVERITY_ERROR, fmt, std::forward< Args >( args )... );
+        detail::Print( RG_MESSAGE_SEVERITY_ERROR, fmt, std::forward< Args& >( args )... );
     }
 
 }
