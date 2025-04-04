@@ -7,5 +7,7 @@
 .vs/
 .idea/
 .vscode/
+.cache/
 
 Build/
+build/
